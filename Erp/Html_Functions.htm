@@ -1,0 +1,49 @@
+<OBJECT RUNAT=server PROGID=SubFunctions.Main id=FHTML></OBJECT>
+<object id="Convert" PROGID="ConvertMisToWord.ChangMis" RUNAT="server"></object>
+<OBJECT RUNAT=server PROGID=ADODB.Recordset id=RsComp> </OBJECT>
+<OBJECT RUNAT=server PROGID=NtvDB.Do id=RssDo></OBJECT>
+<!-- #include file="../HebrewMeta.jv"-->
+<%
+????????
+'//NOUUUUUU
+'????· ??°?·'
+'================================
+Dim CNm 
+Dim CKod 
+
+
+function repDefaltePrinter2( PrinterName )//?? ?? ?º??? ?????±- ????± ??°?°· ????  
+{ 
+	try{   
+	//debugger;
+		var wshshell=new ActiveXObject("wscript.shell"); 
+	    var Printers = wshshell2.EnumPrinterConnections();   
+	    
+		sRegVal = 'HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device'
+	    sDefault = wshshell.RegRead(sRegVal).split(",")[0];
+	    SwPrinter=-1;
+	    for(i = 0;i<Printers.length;i++)
+	    {   
+	        if(Printers.Item(i+1)==PrinterName)  SwPrinter=i+1;             
+	        i++;   
+	    }  
+	    if(SwPrinter!=-1)
+	    { 
+			ps = Printers.Item(SwPrinter);   
+			wshshell2.SetDefaultPrinter(ps);   
+				    
+			idWBPrint.ExecWB(6,2); //print madbeka 
+			
+			alert("! ????±? ??º?? ??º???")
+			
+			window.setTimeout("wshshell2.SetDefaultPrinter(sDefault);",1000);
+			window.close();
+		}
+	}   
+	catch(err)
+	{ 	
+		wshshell2.SetDefaultPrinter(sDefault);			
+	}   
+}  
+
+
