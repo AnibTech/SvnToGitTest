@@ -9,6 +9,7 @@
 <%
     ' טסט שחחחלללל
     ' 4
+
 function getVfS(str,fieldNm)
 	nm = "##"+fieldNm+":"
 	s = ""
